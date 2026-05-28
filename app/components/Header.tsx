@@ -3,16 +3,16 @@ export default function Header() {
     <>
       {/* Top Bar */}
       <div className="header-top">
-        <div className="container">
+        <div className="header-top-inner">
           <div className="header-top-social">
             <a href="#" aria-label="Instagram">📷</a>
             <a href="#" aria-label="Facebook">👍</a>
             <a href="#" aria-label="WhatsApp">💬</a>
           </div>
-          <p style={{ fontSize: 12, color: "hsl(0,0%,60%)" }}>
+          <p className="header-top-banner">
             🚚 Frete grátis para pedidos acima de R$200,00
           </p>
-          <div className="header-top-actions">
+          <div className="header-top-links">
             <a href="#">Sobre Nós</a>
             <a href="#">FAQ</a>
             <a href="#">Contato</a>
@@ -22,38 +22,45 @@ export default function Header() {
 
       {/* Main Header */}
       <header className="header-main">
-        <div className="container">
-          <a href="/" className="logo">
-            Ten<span>Tech</span> 3D
-          </a>
+        <div className="header-main-inner">
+          {/* Row 1: Logo + Actions */}
+          <div className="header-row1">
+            <a href="/" className="logo">
+              Ten<span>Tech</span> 3D
+            </a>
 
-          <div className="search-bar">
-            <input
-              type="text"
-              placeholder="Buscar produtos, filamentos, impressoras..."
-            />
-            <button aria-label="Buscar">🔍</button>
+            {/* Desktop search (hidden on mobile) */}
+            <div className="search-bar search-desktop">
+              <input type="text" placeholder="Buscar produtos, filamentos, impressoras..." />
+              <button aria-label="Buscar">🔍</button>
+            </div>
+
+            <div className="header-actions">
+              <button className="header-action-btn">
+                <span className="action-icon">👤</span>
+                <span className="action-label">Conta</span>
+              </button>
+              <button className="header-action-btn">
+                <span className="action-icon" style={{ position: "relative", display: "inline-block" }}>
+                  ❤️
+                  <span className="badge">3</span>
+                </span>
+                <span className="action-label">Favoritos</span>
+              </button>
+              <button className="header-action-btn">
+                <span className="action-icon" style={{ position: "relative", display: "inline-block" }}>
+                  🛒
+                  <span className="badge">5</span>
+                </span>
+                <span className="action-label">Carrinho</span>
+              </button>
+            </div>
           </div>
 
-          <div className="header-actions">
-            <button className="header-action-btn">
-              <span style={{ fontSize: 22 }}>👤</span>
-              <span>Conta</span>
-            </button>
-            <button className="header-action-btn">
-              <span style={{ fontSize: 22, position: "relative" }}>
-                ❤️
-                <span className="badge">3</span>
-              </span>
-              <span>Favoritos</span>
-            </button>
-            <button className="header-action-btn">
-              <span style={{ fontSize: 22, position: "relative" }}>
-                🛒
-                <span className="badge">5</span>
-              </span>
-              <span>Carrinho</span>
-            </button>
+          {/* Row 2: Mobile search (hidden on desktop) */}
+          <div className="search-bar search-mobile">
+            <input type="text" placeholder="Buscar produtos..." />
+            <button aria-label="Buscar">🔍</button>
           </div>
         </div>
       </header>
