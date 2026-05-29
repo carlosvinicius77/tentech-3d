@@ -1,10 +1,11 @@
-import type { Metadata, Viewport } from "next";
+import type { Viewport } from "next";
+import { defaultMetadata } from "@/lib/metadata";
+import { OrganizationSchema, LocalBusinessSchema } from "@/components/seo/JsonLd";
 import "./globals.css";
+import ClientProviders from "./components/ClientProviders";
+import CookieBanner from "./components/gdpr/CookieBanner";
 
-export const metadata: Metadata = {
-  title: "TenTech 3D — Impressão 3D e Produtos Personalizados",
-  description: "Sua loja de impressão 3D personalizada, filamentos, impressoras e acessórios. Qualidade e tecnologia ao seu alcance.",
-};
+export const metadata = defaultMetadata;
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -18,7 +19,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body>{children}</body>
+      <body>
+        <OrganizationSchema />
+        <LocalBusinessSchema />
+        <ClientProviders>{children}</ClientProviders>
+        <CookieBanner />
+      </body>
     </html>
   );
 }

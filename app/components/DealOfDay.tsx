@@ -35,10 +35,10 @@ export default function DealOfDay() {
           <div className="deal-content">
             <span className="deal-badge">Oferta Relâmpago</span>
             <h3 className="deal-title">
-              Impressora Creality Ender 3 V3 SE
+              Pack Miniaturas RPG — Coleção Completa
             </h3>
             <p className="deal-description">
-              Impressora 3D FDM com nivelamento automático CR Touch, velocidade de até 250mm/s e tela touchscreen. Perfeita para iniciantes e makers.
+              10 miniaturas impressas em resina de alta resolução: guerreiros, magos, monstros e cenários. Perfeito para campanhas de D&amp;D e Pathfinder. Pintadas à mão ou em resina natural.
             </p>
 
             <div className="countdown">
@@ -57,37 +57,26 @@ export default function DealOfDay() {
             </div>
 
             <div className="deal-price">
-              <span className="deal-price-now">R$999,00</span>
-              <span className="deal-price-old">R$1.499,00</span>
-              <span
-                style={{
-                  background: "var(--bittersweet)",
-                  color: "white",
-                  padding: "2px 10px",
-                  borderRadius: "999px",
-                  fontSize: 12,
-                  fontWeight: 700,
-                }}
-              >
-                -33%
+              <span className="deal-price-now">R$189,90</span>
+              <span className="deal-price-old">R$279,90</span>
+              <span style={{ background: "var(--bittersweet)", color: "white", padding: "2px 10px", borderRadius: "999px", fontSize: 12, fontWeight: 700 }}>
+                -32%
               </span>
             </div>
 
             <div className="deal-stock">
               <p className="deal-stock-text">
-                <strong style={{ color: "var(--salmon-pink)" }}>23 vendidos</strong> — Restam 7 unidades!
+                <strong style={{ color: "var(--salmon-pink)" }}>31 vendidos</strong> — Restam apenas 4 kits!
               </p>
               <div className="stock-bar">
-                <div className="stock-fill" style={{ width: "77%" }} />
+                <div className="stock-fill" style={{ width: "88%" }} />
               </div>
             </div>
 
-            <a href="#" className="deal-btn">
-              🛒 Comprar Agora
-            </a>
+            <a href="#" className="deal-btn">🛒 Comprar Agora</a>
           </div>
 
-          <div className="deal-image">🖨️</div>
+          <div className="deal-image">🎭</div>
         </div>
       </div>
     </section>

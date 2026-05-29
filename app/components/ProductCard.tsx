@@ -1,3 +1,8 @@
+"use client";
+
+import { useState } from "react";
+import { useCart } from "@/lib/cart/CartContext";
+
 interface Product {
   badge?: string;
   badgeType?: "default" | "new" | "sale";
@@ -21,7 +26,44 @@ function Stars({ rating }: { rating: number }) {
   );
 }
 
+function parsePrice(price: string): number {
+  return parseFloat(
+    price.replace(/[R$\s]/g, "").replace(/\./g, "").replace(",", ".")
+  );
+}
+
+function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
+
 export default function ProductCard({ product }: { product: Product }) {
+  const { dispatch } = useCart();
+  const [added, setAdded] = useState(false);
+
+  const handleAddToCart = () => {
+    const id = slugify(product.title);
+    dispatch({
+      type: "ADD_ITEM",
+      item: {
+        id,
+        name: product.title,
+        slug: id,
+        price: parsePrice(product.price),
+        originalPrice: product.oldPrice ? parsePrice(product.oldPrice) : undefined,
+        image: product.icon,
+        material: "PLA",
+        acabamento: "Natural",
+      },
+    });
+    setAdded(true);
+    setTimeout(() => setAdded(false), 1500);
+  };
+
   return (
     <div className="product-card">
       {product.badge && (
@@ -57,8 +99,11 @@ export default function ProductCard({ product }: { product: Product }) {
             <span className="price-old">{product.oldPrice}</span>
           )}
         </div>
-        <button className="add-to-cart-btn">
-          🛒 Adicionar ao Carrinho
+        <button
+          className={`add-to-cart-btn${added ? " added" : ""}`}
+          onClick={handleAddToCart}
+        >
+          {added ? "✓ Adicionado!" : "🛒 Adicionar ao Carrinho"}
         </button>
       </div>
     </div>

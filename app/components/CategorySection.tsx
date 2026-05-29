@@ -1,12 +1,12 @@
 const categories = [
-  { icon: "🧵", name: "Filamentos", count: 48 },
-  { icon: "🖨️", name: "Impressoras", count: 12 },
-  { icon: "🎭", name: "Miniaturas", count: 95 },
-  { icon: "⚙️", name: "Peças", count: 67 },
-  { icon: "🔧", name: "Acessórios", count: 134 },
-  { icon: "🎨", name: "Personalizados", count: 200 },
-  { icon: "🏠", name: "Decoração", count: 43 },
-  { icon: "🔬", name: "Protótipos", count: 28 },
+  { icon: "🎨", name: "Impressão Sob Demanda", count: 200 },
+  { icon: "🎭", name: "Miniaturas",            count: 95  },
+  { icon: "🏠", name: "Decoração",             count: 43  },
+  { icon: "👤", name: "Personalizados",        count: 176 },
+  { icon: "🔬", name: "Protótipos",            count: 28  },
+  { icon: "🎮", name: "Games & RPG",           count: 67  },
+  { icon: "🏆", name: "Troféus & Prêmios",     count: 34  },
+  { icon: "💡", name: "Luminárias",            count: 19  },
 ];
 
 export default function CategorySection() {

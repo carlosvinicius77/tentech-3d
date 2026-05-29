@@ -1,4 +1,22 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+import { useCart } from "@/lib/cart/CartContext";
+
 export default function Header() {
+  const { itemCount, dispatch } = useCart();
+  const prevCount = useRef(itemCount);
+  const badgeRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    if (itemCount > prevCount.current && badgeRef.current) {
+      badgeRef.current.classList.remove("badge-bounce");
+      void badgeRef.current.offsetWidth;
+      badgeRef.current.classList.add("badge-bounce");
+    }
+    prevCount.current = itemCount;
+  }, [itemCount]);
+
   return (
     <>
       {/* Top Bar */}
@@ -40,19 +58,34 @@ export default function Header() {
                 <span className="action-icon">👤</span>
                 <span className="action-label">Conta</span>
               </button>
-              <button className="header-action-btn">
+              <button className="header-action-btn hide-mobile">
                 <span className="action-icon" style={{ position: "relative", display: "inline-block" }}>
                   ❤️
                   <span className="badge">3</span>
                 </span>
                 <span className="action-label">Favoritos</span>
               </button>
-              <button className="header-action-btn">
+              <button
+                className="header-action-btn"
+                onClick={() => dispatch({ type: "OPEN_DRAWER" })}
+                aria-label={`Carrinho com ${itemCount} ${itemCount === 1 ? "item" : "itens"}`}
+              >
                 <span className="action-icon" style={{ position: "relative", display: "inline-block" }}>
                   🛒
-                  <span className="badge">5</span>
+                  {itemCount > 0 && (
+                    <span ref={badgeRef} className="badge">
+                      {itemCount > 99 ? "99+" : itemCount}
+                    </span>
+                  )}
                 </span>
                 <span className="action-label">Carrinho</span>
+              </button>
+              <button className="header-action-btn hamburger-btn" aria-label="Menu">
+                <span className="hamburger-icon">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </span>
               </button>
             </div>
           </div>
