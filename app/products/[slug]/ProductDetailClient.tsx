@@ -115,6 +115,7 @@ export default function ProductDetailClient({
                   <span className="pd-price-badge">-{product.discount}%</span>
                 </div>
                 <p className="pd-installments">{product.installments}</p>
+                <p className="pd-pix-line">💳 À vista no PIX com 5% de desconto: R${(product.price * 0.95).toFixed(2).replace('.', ',')}</p>
               </div>
 
               <hr className="pd-divider" />
@@ -293,6 +294,20 @@ export default function ProductDetailClient({
                     <span className="pd-score-total">
                       {product.reviews} avaliações
                     </span>
+                  </div>
+                  <div className="pd-reviews-bars">
+                    {[5,4,3,2,1].map((star) => {
+                      const pct = star === product.rating ? 78 : star === product.rating - 1 ? 14 : star > product.rating - 2 ? 5 : 2;
+                      return (
+                        <div key={star} className="pd-bar-row">
+                          <span className="pd-bar-label">{star}★</span>
+                          <div className="pd-bar-track">
+                            <div className="pd-bar-fill" style={{ width: `${pct}%` }} />
+                          </div>
+                          <span className="pd-bar-pct">{pct}%</span>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
 
